@@ -1,8 +1,7 @@
+#include "array.c"
+#include <stdbool.h>
 #include <stdio.h>
 
-void copyArray(int arr[], int copy[], int size);
-void displayArray(int arr[], int size);
-void testMerge(int arr[], int size);
 int testMergeSort(int arr[], int size);
 
 // Merges sorted subarrays A[left..mid] and A[mid..right] into a sorted array.
@@ -66,29 +65,44 @@ int main(void) {
   int arr11[] = {9, 7, 6, 5};
   int arr12[] = {9, 7, 6, 5, 3};
   int arr13[] = {9, 7, 11, 3};
-  testMergeSort(arr1, sizeof arr1 / SIZE_INT);
-  testMergeSort(arr2, sizeof arr2 / SIZE_INT);
-  testMergeSort(arr3, sizeof arr3 / SIZE_INT);
-  testMergeSort(arr4, sizeof arr4 / SIZE_INT);
+
+  // testMergeSort(arr1, sizeof arr1 / SIZE_INT);
+  // testMergeSort(arr2, sizeof arr2 / SIZE_INT);
+  // testMergeSort(arr3, sizeof arr3 / SIZE_INT);
+  // testMergeSort(arr4, sizeof arr4 / SIZE_INT);
   testMergeSort(arr5, sizeof arr5 / SIZE_INT);
   testMergeSort(arr6, sizeof arr6 / SIZE_INT);
-  testMergeSort(arr7, sizeof arr7 / SIZE_INT);
-  testMergeSort(arr8, sizeof arr8 / SIZE_INT);
-  testMergeSort(arr9, sizeof arr9 / SIZE_INT);
-  testMergeSort(arr10, sizeof arr10 / SIZE_INT);
-  testMergeSort(arr11, sizeof arr11 / SIZE_INT);
-  testMergeSort(arr12, sizeof arr12 / SIZE_INT);
-  testMergeSort(arr13, sizeof arr13 / SIZE_INT);
-}
+  // testMergeSort(arr7, sizeof arr7 / SIZE_INT);
+  // testMergeSort(arr8, sizeof arr8 / SIZE_INT);
+  // testMergeSort(arr9, sizeof arr9 / SIZE_INT);
+  // testMergeSort(arr10, sizeof arr10 / SIZE_INT);
+  // testMergeSort(arr11, sizeof arr11 / SIZE_INT);
+  // testMergeSort(arr12, sizeof arr12 / SIZE_INT);
+  // testMergeSort(arr13, sizeof arr13 / SIZE_INT);
 
-void testMerge(int arr[], int size) {
-  int left = 0, right = size - 1;
-  int mid = left + (right - left) / 2;
-  merge(arr, left, mid, right);
-  for (int i = 0; i < size; i++) {
-    printf("%d ", arr[i]);
-  }
-  puts("");
+  // printf("%s \n", isSorted(arr1, 5) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr2, 4) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr3, 4) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr4, 5) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr5, 4) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr6, 5) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr7, 1) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr8, 2) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr9, 2) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr10, 5) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr11, 4) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr12, 5) ? "Sorted" : "not sorted");
+  // printf("%s \n", isSorted(arr13, 4) ? "Sorted" : "not sorted");
+
+  // int e1[] = {1, 2, 3, 5, 7};
+  // int e2[] = {1, 2, 3, 5, 5};
+  // int e3[] = {1};
+  // int e4[] = {3, 5, 5, 7, 9};
+  // printf(areEqual(arr1, arr1, 5, 5) ? "Equal\n" : "Not equal\n");
+  // printf(areEqual(arr1, e1, 5, 5) ? "Equal\n" : "Not equal\n");
+  // printf(areEqual(arr1, e2, 5, 5) ? "Equal\n" : "Not equal\n");
+  // printf(areEqual(arr1, e3, 5, 5) ? "Equal\n" : "Not equal\n");
+  // printf(areEqual(arr6, e4, 5, 5) ? "Equal\n" : "Not equal\n");
 }
 
 int testMergeSort(int arr[], int size) {
@@ -96,28 +110,8 @@ int testMergeSort(int arr[], int size) {
   copyArray(arr, copy, size);
   int left = 0, right = size - 1;
   mergeSort(arr, left, right);
-  for (int i = 1; i < size; i++) {
-    if (arr[i] < arr[i - 1]) {
-      puts("Bad sort");
-      return 0;
-    }
-  }
-  puts("Good sort");
+  printf("%s\n", isSorted(arr, size) ? "Sorted" : "Not sorted");
+  printf("%s\n", areEqual(arr, copy, size, size) ? "Equal" : "Not Equal");
+  puts("");
   return 1;
-}
-
-// Returns a copy of an array of integers
-// copy[] should be an empty array of the same size as arr[]
-void copyArray(int arr[], int copy[], int size) {
-  for (int i = 0; i < size; i++) {
-    copy[i] = arr[i];
-  }
-}
-
-// Prints an array of integers
-void displayArray(int arr[], int size) {
-  for (int i = 0; i < size; i++) {
-    printf("%d ", arr[i]);
-  }
-  printf("\n");
 }
