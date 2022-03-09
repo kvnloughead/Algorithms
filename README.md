@@ -1,3 +1,3 @@
-# Algorithms
+# Algorithms in C
 
-Repo to store algorithms that I've implemented.
+Repo to store some algorithms in C that I've implemented, plus assorted helper functions.

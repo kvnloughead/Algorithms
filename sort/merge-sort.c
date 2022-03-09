@@ -1,4 +1,4 @@
-#include "array.c"
+#include "../includes/array.c"
 #include <stdbool.h>
 #include <stdio.h>
 
